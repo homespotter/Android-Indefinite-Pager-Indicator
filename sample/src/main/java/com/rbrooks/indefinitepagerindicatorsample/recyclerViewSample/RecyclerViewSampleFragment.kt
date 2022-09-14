@@ -23,10 +23,17 @@ class RecyclerViewSampleFragment : Fragment(), OnPagerNumberChangeListener {
 
     private var recyclerViewAdapter: PhotoItemRecyclerAdapter? = null
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         val view = inflater.inflate(R.layout.fragment_recyclerview_sample, container, false)
 
-        isVerticalEnabled = requireContext().getSharedPreferences(MainActivity.SHARED_PREFERENCES, AppCompatActivity.MODE_PRIVATE).getBoolean(
+        isVerticalEnabled = requireContext().getSharedPreferences(
+            MainActivity.SHARED_PREFERENCES,
+            AppCompatActivity.MODE_PRIVATE
+        ).getBoolean(
             isVerticalIndicatorKeyPreference,
             false
         )
@@ -48,7 +55,8 @@ class RecyclerViewSampleFragment : Fragment(), OnPagerNumberChangeListener {
     private fun setupViews() {
         recyclerViewAdapter = PhotoItemRecyclerAdapter(requireContext())
         recyclerView.adapter = recyclerViewAdapter
-        recyclerView.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+        recyclerView.layoutManager =
+            LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         if (isVerticalEnabled) {
             pagerIndicator.attachToRecyclerView(recyclerView)
             pagerIndicator.visibility = View.VISIBLE

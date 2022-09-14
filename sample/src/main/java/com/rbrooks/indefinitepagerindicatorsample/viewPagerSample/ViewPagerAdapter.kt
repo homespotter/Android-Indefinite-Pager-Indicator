@@ -30,13 +30,14 @@ class ViewPagerAdapter(private val context: Context) : PagerAdapter() {
         return view
     }
 
-    override fun isViewFromObject(view: View, `object`: Any): Boolean = view == `object`
-
     override fun destroyItem(container: ViewGroup, position: Int, `object`: Any) {
         container.removeView(`object` as View)
     }
 
-    override fun getCount(): Int = PreferenceManager.getDefaultSharedPreferences(context).getInt(PagerNumberPickerDialogPreference.KEY_NUM_PAGES, PagerNumberPickerDialogPreference.DEFAULT_PAGES)
+    override fun isViewFromObject(view: View, `object`: Any): Boolean = view == `object`
+
+    override fun getCount(): Int = PreferenceManager.getDefaultSharedPreferences(context)
+        .getInt(PagerNumberPickerDialogPreference.KEY_NUM_PAGES, PagerNumberPickerDialogPreference.DEFAULT_PAGES)
 
     private fun openLink(link: Uri) {
         context.startActivity(Intent(Intent.ACTION_VIEW, link))

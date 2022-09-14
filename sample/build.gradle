@@ -1,16 +1,14 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
 
 android {
-
-    compileSdkVersion 29
-    buildToolsVersion "29.0.2"
+    compileSdkVersion 33
+    buildToolsVersion '33.0.0'
 
     defaultConfig {
         applicationId "com.rbrooks.infinitepageindicator"
         minSdkVersion 16
-        targetSdkVersion 29
+        targetSdkVersion 33
         versionCode 1
         versionName "1.0"
     }
@@ -21,51 +19,32 @@ android {
         }
     }
 
-    // region compile options
-
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
-    }
-
-    // endregion
-
-    // region compile options
-
-    kotlinOptions {
-        jvmTarget = JavaVersion.VERSION_1_8
-    }
-
-    // endregion
-
-
-    // region dex options
-
-    dexOptions {
-        javaMaxHeapSize "4g"
-        maxProcessCount 8
-    }
-
-    // endregion
-
     lintOptions {
         abortOnError false
+    }
+
+    buildFeatures {
+        viewBinding true
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
+    }
+
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_11
     }
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
-
-    // Support libs
-    implementation "androidx.appcompat:appcompat:1.1.0"
-    implementation "androidx.appcompat:appcompat-resources:1.1.0"
-    implementation 'androidx.recyclerview:recyclerview:1.1.0-beta04'
-    implementation 'com.google.android.material:material:1.1.0-alpha10'
-    implementation 'androidx.cardview:cardview:1.0.0'
-    implementation 'com.duolingo.open:rtl-viewpager:1.0.2'
-    implementation 'androidx.core:core-ktx:1.1.0'
 
     // Library dependency
     implementation project(':indefinitepagerindicator')
+
+    // Support libs
+    implementation 'androidx.appcompat:appcompat:1.4.2'
+    implementation 'androidx.cardview:cardview:1.0.0'
+    implementation 'androidx.recyclerview:recyclerview:1.2.1'
+    implementation 'com.google.android.material:material:1.6.1'
 }

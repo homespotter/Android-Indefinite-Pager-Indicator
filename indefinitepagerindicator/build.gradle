@@ -1,103 +1,38 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
+apply plugin: "org.jlleitschuh.gradle.ktlint"
 
-ext {
-    bintrayRepo = 'maven'
-    bintrayName = 'IndefinitePagerIndicator'
-
-    publishedGroupId = 'com.ryanjeffreybrooks'
-    libraryName = 'IndefinitePagerIndicator'
-    artifact = 'indefinitepagerindicator'
-
-    libraryDescription = 'A lightweight, plug-and-play indefinite pager indicator for RecyclerViews & ViewPagers.'
-
-    siteUrl = 'https://github.com/rbro112/Android-Indefinite-Pager-Indicator'
-    gitUrl = 'https://github.com/rbro112/Android-Indefinite-Pager-Indicator.git'
-
-    libraryVersion = '1.0.10'
-
-    developerId = 'rbro112'
-    developerName = 'Ryan Brooks'
-    developerEmail = 'ryanjeffrey.brooks112@gmail.com'
-
-    licenseName = 'MIT License'
-    licenseUrl = 'https://github.com/rbro112/Android-Indefinite-Pager-Indicator/blob/master/LICENSE.md'
-    allLicenses = ["MIT"]
-}
+group = 'com.ryanjeffreybrooks.IndefinitePagerIndicator'
 
 android {
-    compileSdkVersion 29
-    buildToolsVersion "29.0.2"
+
+    compileSdkVersion 33
+    buildToolsVersion '33.0.0'
 
     defaultConfig {
         minSdkVersion 16
-        targetSdkVersion 29
-        versionCode 1
-        versionName "1.0"
-
+        targetSdkVersion 33
     }
 
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-        }
+    buildFeatures {
+        viewBinding true
     }
-
-    // region compile options
 
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
     }
-
-    // endregion
-
-    // region compile options
 
     kotlinOptions {
-        jvmTarget = JavaVersion.VERSION_1_8
+        jvmTarget = JavaVersion.VERSION_11
     }
-
-    // endregion
-
-
-    // region dex options
-
-    dexOptions {
-        javaMaxHeapSize "4g"
-        maxProcessCount 8
-    }
-
-    // endregion
-
-    // region exclude duplicated meta inf files
-
-    packagingOptions {
-        exclude 'META-INF/app_debug.kotlin_module'
-        exclude 'META-INF/library-core_release.kotlin_module'
-    }
-
-    // endregion
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
-    implementation "androidx.appcompat:appcompat:1.1.0"
-    implementation "androidx.appcompat:appcompat-resources:1.1.0"
-    implementation 'androidx.recyclerview:recyclerview:1.1.0-beta04'
-    implementation 'com.google.android.material:material:1.1.0-alpha10'
-}
-
-if (project.rootProject.file('../gradle/bintray_installer.gradle').exists()) {
-
-    plugins {
-        id "com.github.dcendents.android-maven" version "2.1"
-        id "com.jfrog.bintray" version "1.8.4"
-    }
-
-    apply from: '../gradle/bintray_installer.gradle'
-    apply from: '../gradle/maven_installer.gradle'
+    implementation 'androidx.annotation:annotation:1.4.0'
+    implementation 'androidx.appcompat:appcompat:1.4.2'
+    implementation 'androidx.core:core-ktx:1.8.0'
+    implementation 'androidx.recyclerview:recyclerview:1.2.1'
+    implementation 'androidx.viewpager:viewpager:1.0.0'
+    implementation 'androidx.viewpager2:viewpager2:1.0.0'
 }

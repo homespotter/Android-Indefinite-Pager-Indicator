@@ -16,7 +16,6 @@
         style="@style/TabBarTheme"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/main_activity_title"
         android:layout_gravity="bottom"
         android:background="@color/colorPrimary"
         app:tabGravity="fill"
@@ -30,17 +29,12 @@
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/recyclerview" />
-
-        <com.google.android.material.tabs.TabItem
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/rtl_view_pager" />
-
-        <com.google.android.material.tabs.TabItem
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:text="@string/view_pager2" />
+
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/recyclerview" />
 
     </com.google.android.material.tabs.TabLayout>
 
